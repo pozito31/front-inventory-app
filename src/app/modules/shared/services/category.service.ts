@@ -9,13 +9,48 @@ const base_url = environment.base_url;
 })
 export class CategoryService {
 
+
   constructor(private http: HttpClient) { }
 
   /**
    * get all categories
    */
-  getCategories() {
+  getCategories(){
+
     const endpoint = `${base_url}/categories`;
+    return this.http.get(endpoint);
+
+  }
+
+  /**
+   * save the categories
+   */
+  saveCategorie(body: any) {
+    const endpoint = `${base_url}/categories`;
+    return this.http.post(endpoint, body);
+  }
+
+  /**
+   * update categorie
+   */
+  updateCategorie(body: any, id: any){
+    const endpoint = `${base_url}/categories/ ${id}`;
+    return this.http.put(endpoint, body);
+  }
+
+  /**
+   * update categorie
+   */
+  deleteCategorie(id: any){
+    const endpoint = `${base_url}/categories/ ${id}`;
+    return this.http.delete(endpoint);
+  }
+
+  /**
+   * update categorie
+   */
+  getCategorieById(id: any){
+    const endpoint = `${base_url}/categories/ ${id}`;
     return this.http.get(endpoint);
   }
 }
